@@ -38,19 +38,29 @@ let ContentSection = function (metafile) {
 
     self.list = ko.observableArray();
 
-    self.metaInfo = ko.pureComputed({
-        read: function () {
-            return self.metaFile();
-        },
-        write: function (value) {
-            $.getJSON(self.metaFile(), function (metadata) {
-                self.title(metadata.title);
-                $.getJSON(metadata.contentfile, function (data) {
-                    ko.mapping.fromJS(data, self.list);
-                });
+    self.load = function () {
+        $.getJSON(self.metaFile(), function (metadata) {
+            self.title(metadata.title);
+            $.getJSON(metadata.contentfile, function (data) {
+                self.list = ko.mapping.fromJS(data);
             });
-        }
-    });
+        });
+    };
+    self.load();
+
+    // self.metaInfo = ko.pureComputed({
+    //     read: function () {
+    //         return self.metaFile();
+    //     },
+    //     write: function (value) {
+    //         $.getJSON(self.metaFile(), function (metadata) {
+    //             self.title(metadata.title);
+    //             $.getJSON(metadata.contentfile, function (data) {
+    //                 ko.mapping.fromJS(data, self.list);
+    //             });
+    //         });
+    //     }
+    // });
 }
 
 /* ---------------------------------------------- */

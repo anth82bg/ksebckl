@@ -30,6 +30,15 @@
             bottom: 0;
             height: inherit;
         }
+
+        .mono {
+            font-family: "Inconsolata", Andale Mono, Monaco, Monospace;
+            color: #2e87dd;
+            line-height: 21px;
+            width: 420px;
+            background-color: #eee;
+            padding: 12px;
+        }
     </style>
 </head>
 
@@ -76,8 +85,14 @@
     <div class="w3-main" style="margin-left:250px">
 
         <div class="w3-row w3-padding-64" data-bind="foreach: Sections">
+
             <div class="w3-twothird w3-container">
                 <h1 class="w3-text-teal" data-bind="text: title"></h1>
+                <table>
+                    <tr data-bind="foreach: list">
+                        <td data-bind="text: $Data[0]"></td>
+                    </tr>
+                </table>
             </div>
             <div class="w3-third w3-container">
                 <p class="w3-border w3-padding-large w3-padding-32 w3-center">AD1</p>
@@ -137,7 +152,17 @@
                 <a class="w3-button w3-hover-black" href="#">»</a>
             </div>
         </div>
-
+        <div class='mono'>
+            <p>Sir/Madam,</p>
+            <p>As we are not able to get online viewing of our account you are requested to email bank statements of
+                transactions on 2023, April 20 to April 23 as soon as possible.</p>
+            <p><em>Account details</em><br />
+                Account Name: KSEB Chirakkal Revenue Collection Account<br />
+                Account No: 2685201000068</p>
+            <p>Thanking you</p>
+            <p><em>AE</em><br />
+                KSEB ES Chirakkal</p>
+        </div>
         <footer id="myFooter">
             <div class="w3-container w3-theme-l2 w3-padding-32">
                 <h4>Footer</h4>
@@ -177,6 +202,7 @@
     </script>
     <!-- knockout -->
     <script src="./knockout/knockout-3.5.1.js"></script>
+    <script src="./knockout/knockout.mapping-latest.js"></script>
     <script src="./code.js"></script>
     <!-- knockout -->
 </body>
